@@ -1,0 +1,50 @@
+<link href="./assets/css/tasks.css" rel="stylesheet">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Filter Tasks</h5>
+                    <div class="mb-3">
+                        <label>Priority</label>
+                        <select class="form-select" id="priorityFilter">
+                            <option value="">All</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Status</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="tasks-container">
+                <div class="task-card">
+                    <div class="task-info">
+                        <h3 class="task-title">Example Task</h3>
+                        <p class="task-description">This is a sample task description.</p>
+                        <div class="task-meta">
+                            <span class="task-priority priority-high">High</span>
+                            <span class="task-category">Work</span>
+                            <span class="task-date"><i class="far fa-calendar"></i> 2024-01-20</span>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="task-action-btn"><i class="fas fa-edit"></i></button>
+                        <button class="task-action-btn"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <!-- More task cards will be added dynamically -->
+            </div>
+        </div>
+    </div>
+</div>

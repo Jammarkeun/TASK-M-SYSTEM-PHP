@@ -1,0 +1,145 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar will be included through the main layout -->
+        <div class="col-md-9 col-lg-10 main-content">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Create New Task</h5>
+                    <button class="btn btn-outline-secondary" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+                <div class="card-body">
+                    <form id="createTaskForm" class="needs-validation" novalidate>
+                        <!-- Task Title -->
+                        <div class="mb-4">
+                            <label for="taskTitle" class="form-label">Task Title</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="taskTitle" 
+                                   name="title"
+                                   required
+                                   minlength="3">
+                            <div class="invalid-feedback">
+                                Please enter a task title (minimum 3 characters)
+                            </div>
+                        </div>
+
+                        <!-- Task Description -->
+                        <div class="mb-4">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <textarea class="form-control" 
+                                      id="taskDescription" 
+                                      name="description"
+                                      rows="4"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <!-- Due Date -->
+                            <div class="col-md-6 mb-4">
+                                <label for="dueDate" class="form-label">Due Date</label>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="dueDate" 
+                                       name="due_date"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Please select a due date
+                                </div>
+                            </div>
+
+                            <!-- Priority -->
+                            <div class="col-md-6 mb-4">
+                                <label for="priority" class="form-label">Priority</label>
+                                <select class="form-select" 
+                                        id="priority" 
+                                        name="priority"
+                                        required>
+                                    <option value="">Select Priority</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a priority level
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="mb-4">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" 
+                                    id="category" 
+                                    name="category"
+                                    required>
+                                <option value="">Select Category</option>
+                                <option value="work">Work</option>
+                                <option value="personal">Personal</option>
+                                <option value="study">Study</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a category
+                            </div>
+                        </div>
+
+                        <!-- File Attachments -->
+                        <div class="mb-4">
+                            <label for="attachments" class="form-label">Attachments</label>
+                            <input type="file" 
+                                   class="form-control" 
+                                   id="attachments" 
+                                   name="attachments[]"
+                                   multiple>
+                            <div class="form-text">
+                                Max file size: 5MB. Allowed types: PDF, PNG, JPG
+                            </div>
+                        </div>
+
+                        <!-- Task Tags -->
+                        <div class="mb-4">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="tags" 
+                                   name="tags"
+                                   placeholder="Enter tags separated by commas">
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create Task
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="resetForm()">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Form validation and handling
+    document.getElementById('createTaskForm').addEventListener('submit', function(event) {
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.classList.add('was-validated');
+    });
+
+    // Reset form function
+    function resetForm() {
+        document.getElementById('createTaskForm').reset();
+        document.getElementById('createTaskForm').classList.remove('was-validated');
+    }
+
+    // Set minimum date as today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dueDate').setAttribute('min', today);
+</script>
